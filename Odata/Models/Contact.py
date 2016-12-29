@@ -1,11 +1,17 @@
 import time
 import erppeek
+import random
+import names
 
-class contact(object):
+class Contact(object):
+    def __init__(self):
+        """
+            Wrapper
+        """
 
-    def generate_res_partner_contacts(client, model, show_generated_records_in_terminal, number_of_recs):
+    def generate_contacts(self, client, show_generated_records_in_terminal, number_of_recs):
         start_time = time.time()
-        model_proxy = client.model(model)
+        model_proxy = client.model('res.partner')
         contact_types = ['person', 'company']
         domains = ["@aol.com", "@att.net", "@comcast.net", "@facebook.com", "@gmail.com", "@gmx.com", "@googlemail.com",
   "@google.com", "@hotmail.com", "@hotmail.co.uk", "@mac.com", "@me.com", "@mail.com", "@msn.com",
@@ -34,4 +40,5 @@ class contact(object):
             if show_generated_records_in_terminal:
                 print(str(values))
         elapsed_time = time.time() - start_time
-        print('We\'ve imported ' + str(number_of_recs) + ' records in the model ' + str(model) + ' in ' + str(elapsed_time) + ' seconds.')
+        print('We\'ve imported ' + str(number_of_recs) + ' records in the model \'res.partner\' in ' + str(elapsed_time) + ' seconds.')
+
